@@ -9,6 +9,7 @@ import { CartPageComponent } from './cart-page/cart-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.compon
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
