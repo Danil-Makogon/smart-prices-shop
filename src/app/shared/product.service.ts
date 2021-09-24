@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { FbResponse } from './interfaces';
+import { FbResponse, Product } from './interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class ProductService {
 
   constructor(private  http : HttpClient) { }
 
-  create(product) {
+  create(product: { type?: any; title?: any; photo?: any; info?: any; price?: any; date: any; }) {
     return this.http.post(`${environment.fbDbUrl}/products.json`, product)
     .pipe(map( (res : FbResponse) => {
       return {
@@ -32,5 +32,24 @@ export class ProductService {
         date: new Date(res[key].date)
       }))
     }))
+  }
+
+  getById(id: any) {
+    return this.http.get(`${environment.fbDbUrl}/products/${id}.json`)
+    .pipe( map ( (res: Product) => {
+      return {
+        ...res,
+        id,
+        date: new Date(res.date)
+      }
+    }))
+  }
+
+  remove (id) {
+   return this.http.delete(`${environment.fbDbUrl}/products/${id}.json`)
+  }
+
+  update (product: Product) {
+    return this.http.patch(`${environment.fbDbUrl}/products/${product.id}.json`, product)
   }
 }
