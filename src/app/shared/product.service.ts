@@ -9,6 +9,9 @@ import { FbResponse, Product } from './interfaces';
 })
 export class ProductService {
 
+  type = 'Shoes'
+  cartProducts : Product [] = []
+
   constructor(private  http : HttpClient) { }
 
   create(product: { type?: any; title?: any; photo?: any; info?: any; price?: any; date: any; }) {
@@ -34,7 +37,7 @@ export class ProductService {
     }))
   }
 
-  getById(id: any) {
+  getById(id) {
     return this.http.get(`${environment.fbDbUrl}/products/${id}.json`)
     .pipe( map ( (res: Product) => {
       return {
@@ -46,10 +49,18 @@ export class ProductService {
   }
 
   remove (id) {
-   return this.http.delete(`${environment.fbDbUrl}/products/${id}.json`)
+    return this.http.delete(`${environment.fbDbUrl}/products/${id}.json`)
   }
 
-  update (product: Product) {
+  update(product: Product) {
     return this.http.patch(`${environment.fbDbUrl}/products/${product.id}.json`, product)
+  }
+
+  setType (type) {
+    this.type = type
+  }
+
+  addProduct (product) {
+    this.cartProducts.push(product)
   }
 }

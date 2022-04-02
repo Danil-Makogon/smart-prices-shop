@@ -11,7 +11,6 @@ import { ProductService } from 'src/app/shared/product.service';
 export class AddPageComponent implements OnInit {
 
   submitted = false
-
   form: FormGroup
 
   constructor(

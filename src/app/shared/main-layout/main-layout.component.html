@@ -2,16 +2,16 @@
     <h2>SMART PRICES</h2>
     <ul>
         <li routerLinkActive="active">
-            <a href="#">Обувь</a>
+            <a (click)="setType('Shoes')">Обувь</a>
         </li>
         <li routerLinkActive="active">
-            <a href="#">Одежда</a>
+            <a (click)="setType('Clother')">Одежда</a>
         </li>
         <li routerLinkActive="active">
-            <a href="#">Аксессуары</a>
+            <a (click)="setType('Accessories')">Аксессуары</a>
         </li>
         <li routerLinkActive="active">
-            <a [routerLink]="['/cart']">Корзина</a>
+            <a (click)="setType('Корзина')" [routerLink]="['/cart']">Корзина</a>
         </li>
     </ul>
 </nav>
