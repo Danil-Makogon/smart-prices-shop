@@ -1,4 +1,4 @@
-export interface FbResponse{
+export interface FbResponse {
     name: string
 }
 
